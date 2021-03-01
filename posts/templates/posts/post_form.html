@@ -1,0 +1,27 @@
+{% extends 'users/home.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block content %}
+  <div class="container" id="create">
+
+    <form method="POST">
+      {% csrf_token %}
+      {{ form|crispy }}
+
+      <button type="submit" class="btn btn-primary">Create</button> <br>
+
+    </form>
+    <br>
+
+
+  </div>
+
+
+  <script>
+      $('.datetimeinput').datetimepicker({
+        inline:true,
+        format: "YYYY-MM-DD HH:mm:ss"
+      });
+  </script>
+{% endblock %}

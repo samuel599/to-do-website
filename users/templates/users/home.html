@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">
+
+
+  </head>
+  <body>
+    {% include 'users/navbar.html' %}
+
+    <div id="home">
+
+      {% for p in posts %}
+        <h2><a href="{% url 'detail' p.id %}">{{ p.title }}</a></h2>
+        <h6>{{ p.datetime }}</h6>
+        <p>{{ p.description }}</p>
+
+        <a class="btn btn-primary" href="{% url 'update-post' p.id %}">Update</a>
+        <a class="btn btn-danger" href="{% url 'delete-post' p.id %}">Delete</a>
+      {% endfor  %}
+    </div>
+
+    {% block content %}
+    {% endblock %}
+
+
+  </body>
+</html>

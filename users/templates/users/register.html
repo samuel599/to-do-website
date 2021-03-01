@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/register.css' %}">
+    {% load crispy_forms_tags %}
+
+  </head>
+  <body class="body">
+    {% include 'users/home.html' %}
+
+    <div class="container">
+
+      <form method="POST">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <button type="submit" class="btn btn-primary">Register!</button> <br>
+      </form>
+
+      <div class="border-top pt-3">
+        <h6 class='text-muted'>Already have an account? <a href="{% url 'login' %}" class="btn btn-dark">Login</a></h6>
+      </div>
+  </div>
+
+
+  </body>
+</html>
